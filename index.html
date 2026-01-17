@@ -320,24 +320,17 @@
             });
         });
 
-        // Add dynamic particles with enhanced variety
+        // Add dynamic particles
         const particlesContainer = document.querySelector('.particles');
-        const particleCount = window.innerWidth < 768 ? 15 : 30;
+        const particleCount = window.innerWidth < 768 ? 8 : 15;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.top = Math.random() * 100 + '%';
             particle.style.right = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 4 + 's';
-            particle.style.animationDuration = (3 + Math.random() * 3) + 's';
-
-            // Add color variety - some particles with cyan/blue tint
-            if (Math.random() > 0.7) {
-                particle.style.background = 'rgba(0, 191, 255, 0.6)';
-                particle.style.boxShadow = '0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.4)';
-            }
-
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (2 + Math.random() * 2) + 's';
             particlesContainer.appendChild(particle);
         }
 
