@@ -685,6 +685,7 @@ p {
     background: var(--dark-bg);
     -webkit-overflow-scrolling: touch;
     /* Smooth scrolling on iOS */
+    position: relative;
 }
 
 /* Cal.com iframe styling */
@@ -697,12 +698,20 @@ p {
 
 /* Loading state */
 .booking-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 500px;
     gap: var(--spacing-sm);
+    background: var(--dark-bg);
+    z-index: 10;
+    transition: opacity 0.3s ease;
 }
 
 .loading-spinner {
