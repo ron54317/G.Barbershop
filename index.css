@@ -1,25 +1,30 @@
 /* ==================== DESIGN SYSTEM ==================== */
 
 :root {
-    /* Premium Color Palette - Purple/Blue Barbershop Theme */
-    --primary-purple: hsl(265, 85%, 45%);
-    --primary-purple-light: hsl(265, 85%, 55%);
-    --primary-purple-dark: hsl(265, 85%, 35%);
-    --accent-blue: hsl(195, 100%, 50%);
-    --accent-gold: hsl(45, 100%, 60%);
+    /* Modern Artisan Palette - Warm, Textured, Earthy */
+    /* Primary Accent: Copper/Clay instead of Neon Purple */
+    --primary-purple: hsl(28, 65%, 55%);
+    --primary-purple-light: hsl(28, 75%, 65%);
+    --primary-purple-dark: hsl(28, 75%, 40%);
 
-    /* Neutral Colors */
-    --dark-bg: hsl(240, 10%, 8%);
-    --dark-surface: hsl(240, 10%, 12%);
-    --dark-card: hsl(240, 10%, 15%);
-    --text-primary: hsl(0, 0%, 98%);
-    --text-secondary: hsl(0, 0%, 70%);
-    --text-muted: hsl(0, 0%, 50%);
+    /* Secondary Accent: Slate/Steel instead of Cyan */
+    --accent-blue: hsl(215, 25%, 50%);
+    --accent-gold: hsl(35, 60%, 70%);
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--primary-purple) 0%, var(--accent-blue) 100%);
+    /* Neutral Colors - Warmer heavy darks */
+    --dark-bg: hsl(30, 5%, 9%);
+    --dark-surface: hsl(30, 5%, 13%);
+    --dark-card: hsl(30, 5%, 16%);
+
+    /* Text - Off-white parchment tone */
+    --text-primary: hsl(35, 20%, 94%);
+    --text-secondary: hsl(35, 10%, 70%);
+    --text-muted: hsl(35, 5%, 50%);
+
+    /* Gradients - Subtle, not striking */
+    --gradient-primary: linear-gradient(135deg, var(--primary-purple) 0%, hsl(28, 60%, 45%) 100%);
     --gradient-dark: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
-    --gradient-glow: linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 191, 255, 0.3) 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(200, 100, 60, 0.1) 0%, rgba(200, 100, 60, 0.05) 100%);
 
     /* Typography - Hebrew Fonts */
     --font-primary: 'Assistant', 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -32,16 +37,19 @@
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
 
-    /* Effects */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 40px rgba(138, 43, 226, 0.5);
+    /* Effects - Tactile over Glow */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(200, 100, 60, 0.2);
+
+    /* Noise Texture */
+    --noise-pattern: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 
     /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ==================== GLOBAL RESET ==================== */
@@ -67,6 +75,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
     direction: rtl;
     text-align: right;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--noise-pattern);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.7;
+    mix-blend-mode: overlay;
 }
 
 /* Remove blue tap highlight on mobile */
@@ -106,8 +129,11 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(2.5rem, 10vw, 5rem);
-    letter-spacing: 0;
+    font-size: clamp(3rem, 12vw, 6rem);
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-primary);
 }
 
 h2 {
@@ -134,14 +160,15 @@ p {
     right: 0;
     z-index: 1000;
     padding: 0.75rem 1rem;
-    background: rgba(20, 20, 30, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(23, 20, 18, 0.95);
+    /* Warm dark */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
 }
 
 .navbar.scrolled {
-    background: rgba(20, 20, 30, 0.95);
+    background: rgba(23, 20, 18, 0.98);
     box-shadow: var(--shadow-lg);
 }
 
@@ -205,26 +232,33 @@ p {
 }
 
 .cta-button {
-    padding: 0.65rem 1.5rem;
-    background: var(--gradient-primary);
-    border: none;
-    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    background: var(--primary-purple);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    /* Flatter, less "pill" like */
     color: white;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all var(--transition-base);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
     flex-shrink: 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+    background: var(--primary-purple-light);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255, 255, 255, 0.2);
 }
+
+
 
 /* ==================== HERO SECTION ==================== */
 
@@ -273,7 +307,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(20, 20, 30, 0.7) 0%, rgba(138, 43, 226, 0.3) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
     z-index: 1;
 }
 
@@ -322,11 +356,11 @@ p {
 }
 
 .secondary-button {
-    padding: 0.65rem 1.5rem;
+    padding: 0.8rem 2rem;
     background: transparent;
-    border: 2px solid var(--primary-purple);
-    border-radius: 50px;
-    color: var(--text-primary);
+    border: 1px solid var(--text-secondary);
+    border-radius: 4px;
+    color: var(--text-secondary);
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -334,48 +368,19 @@ p {
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .secondary-button:hover {
-    background: var(--primary-purple);
+    background: var(--text-primary);
+    color: var(--dark-bg);
+    border-color: var(--text-primary);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-md);
 }
 
-/* Floating particles effect */
-.particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none;
-}
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(138, 43, 226, 0.5);
-    border-radius: 50%;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: translateY(-20px);
-        opacity: 1;
-    }
-}
 
 /* ==================== SECTION CONTAINER ==================== */
 
@@ -394,11 +399,11 @@ p {
 .section-title::after {
     content: '';
     display: block;
-    width: 100px;
-    height: 4px;
-    background: var(--gradient-primary);
+    width: 60px;
+    height: 2px;
+    background: var(--primary-purple);
     margin: var(--spacing-sm) auto;
-    border-radius: 2px;
+    opacity: 0.8;
 }
 
 /* ==================== GALLERY SECTION ==================== */
@@ -427,9 +432,9 @@ p {
 
 .gallery-item:hover,
 .gallery-item.active-touch {
-    transform: scale(1.02);
+    transform: translateY(-4px) rotate(-1deg);
     z-index: 10;
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-lg);
 }
 
 .gallery-item img {
@@ -502,7 +507,8 @@ p {
 .contact-item:hover {
     transform: translateY(-5px);
     border-color: var(--primary-purple);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-md);
+    background: var(--dark-surface);
 }
 
 .contact-item-icon {
@@ -617,13 +623,13 @@ p {
     max-width: 1000px;
     max-height: 90vh;
     background: var(--dark-surface);
-    border-radius: 24px;
-    border: 1px solid rgba(138, 43, 226, 0.3);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(138, 43, 226, 0.3);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transform: scale(0.9);
+    transform: scale(0.95);
     transition: transform var(--transition-base);
 }
 
@@ -659,8 +665,8 @@ p {
 .booking-modal-header {
     padding: var(--spacing-md);
     text-align: center;
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 191, 255, 0.1) 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--dark-card);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .booking-modal-header h2 {

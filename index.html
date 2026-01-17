@@ -47,14 +47,7 @@
         <div class="hero-overlay"></div>
 
         <!-- Floating Particles -->
-        <div class="particles">
-            <div class="particle" style="top: 20%; right: 10%; animation-delay: 0s;"></div>
-            <div class="particle" style="top: 40%; right: 80%; animation-delay: 0.5s;"></div>
-            <div class="particle" style="top: 60%; right: 20%; animation-delay: 1s;"></div>
-            <div class="particle" style="top: 80%; right: 70%; animation-delay: 1.5s;"></div>
-            <div class="particle" style="top: 30%; right: 50%; animation-delay: 2s;"></div>
-            <div class="particle" style="top: 70%; right: 90%; animation-delay: 2.5s;"></div>
-        </div>
+
 
         <div class="hero-content">
             <h1>G.barbershop</h1>
@@ -338,19 +331,7 @@
             });
         });
 
-        // Add dynamic particles
-        const particlesContainer = document.querySelector('.particles');
-        const particleCount = window.innerWidth < 768 ? 8 : 15;
 
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.right = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 3 + 's';
-            particle.style.animationDuration = (2 + Math.random() * 2) + 's';
-            particlesContainer.appendChild(particle);
-        }
 
         // Add loading state to images
         const images = document.querySelectorAll('img');
