@@ -15,6 +15,11 @@
         href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Styles -->
     <link rel="stylesheet" href="index.css">
 </head>
@@ -96,12 +101,13 @@
                     <div class="contact-item">
                         <div class="contact-item-icon">📍</div>
                         <h3>מיקום</h3>
-                        <p>בקר אותנו במספרה הפרמיום שלנו</p>
+                        <p><a href="https://waze.com/ul?q=ישורון 2 רמת גן ישראל&navigate=yes" target="_blank">ישורון 2,
+                                רמת גן, ישראל</a></p>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">📞</div>
                         <h3>טלפון</h3>
-                        <p><a href="tel:+972501234567">050-123-4567</a></p>
+                        <p><a href="https://wa.me/972585003624" target="_blank">058-500-3624</a></p>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">⏰</div>
@@ -111,10 +117,10 @@
                 </div>
 
                 <div class="social-links">
-                    <a href="#" class="social-icon" aria-label="אינסטגרם">📷</a>
-                    <a href="#" class="social-icon" aria-label="פייסבוק">👥</a>
-                    <a href="#" class="social-icon" aria-label="טיקטוק">🎵</a>
-                    <a href="#" class="social-icon" aria-label="ווצאפ">💬</a>
+                    <a href="#" class="social-icon" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/972585003624" class="social-icon" aria-label="ווצאפ" target="_blank"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
 
                 <div style="margin-top: 3rem;">
@@ -314,17 +320,24 @@
             });
         });
 
-        // Add dynamic particles
+        // Add dynamic particles with enhanced variety
         const particlesContainer = document.querySelector('.particles');
-        const particleCount = window.innerWidth < 768 ? 8 : 15;
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.top = Math.random() * 100 + '%';
             particle.style.right = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 3 + 's';
-            particle.style.animationDuration = (2 + Math.random() * 2) + 's';
+            particle.style.animationDelay = Math.random() * 4 + 's';
+            particle.style.animationDuration = (3 + Math.random() * 3) + 's';
+
+            // Add color variety - some particles with cyan/blue tint
+            if (Math.random() > 0.7) {
+                particle.style.background = 'rgba(0, 191, 255, 0.6)';
+                particle.style.boxShadow = '0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.4)';
+            }
+
             particlesContainer.appendChild(particle);
         }
 
