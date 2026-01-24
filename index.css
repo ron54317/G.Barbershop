@@ -322,8 +322,8 @@ p {
     height: 100%;
     object-fit: cover;
     object-position: center 40%;
-    /* Darken significantly to push clutter to shadows */
-    filter: brightness(0.35) contrast(1.1);
+    /* Increased brightness from 0.35 to 0.55 */
+    filter: brightness(0.55) contrast(1.1);
     animation: kenBurns 20s ease-in-out infinite alternate;
 }
 
@@ -343,9 +343,9 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Heavy cinematic vignette + gradient */
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.95) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    /* Softened cinematic vignette + gradient for better visibility */
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.9) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
     z-index: 1;
 }
 
